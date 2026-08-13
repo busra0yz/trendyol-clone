@@ -1,0 +1,17 @@
+# Bağımlılıklar (Bunlar git'e yüklenmez çünkü package.json'dan herkes 'npm install' diyerek kurabilir)
+node_modules/
+
+# Ortam değişkenleri ve şifreler (Kesinlikle git'e yüklenmemesi gereken güvenlik dosyası)
+.env
+
+# Ancak .env.example dosyasının yüklenmesini istiyoruz, başındaki ! "bunu hariç tutma" demektir.
+!.env.example
+
+# Log dosyaları
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# İşletim sistemi kalıntıları
+.DS_Store
+Thumbs.db
