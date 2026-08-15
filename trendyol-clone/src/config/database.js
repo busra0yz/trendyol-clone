@@ -2,7 +2,7 @@ require('dotenv').config(); //.env ayarlarını okuyabiliyoruz.
 
 //Single Responsibility Principle sebepli diğer paketleri (express, bcrypt, jwt, cors, helmet, morgan, path, sequelize) buraya import etmedik.
 
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require('sequelize'); //Sequelize, ORM kütüphanesini import ederek veritabanı bağlantısını kuruyoruz.
 
 //Hem ORM hemde manuel pool kullanılmaz. Zaten ORM arkada pool kullanıyor.
 
