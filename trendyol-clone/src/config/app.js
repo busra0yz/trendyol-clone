@@ -3,7 +3,7 @@ const helmet = require('helmet'); // Güvenlik başlıklarını (headers) otomat
 const cors = require('cors');     // Farklı origin'lerden (domain/port) gelen isteklere (örneğin React frontend'inden) izin verir.
 const morgan = require('morgan'); // Gelen HTTP isteklerini konsola loglar. 'dev' formatı geliştirme aşaması için idealdir.
 
-// 🎓 EKLEME: İleride yazacağımız ana route (yol) dosyamızı projemize dahil ediyoruz.
+// İleride yazacağımız ana route dosyamızı projemize dahil ediyoruz.
 const routes = require('../routes/index');
 
 const app = express();
@@ -24,17 +24,18 @@ app.use('/api/v1', routes);
 
 
 //Middleware burada hatayı yakalar ve frontende iletir.
-app.use((err, req, res, next) => {
-  console.error('🔥 Global Hata Yakalandı:', err.message);
+app.use((err, req, res, next) => { // 4 parametre alması hata ayıklama middleware olduğunu gösterir.
+  // next parametresi hata varsa bir sonrakine iletir.Express.js'in hata ayıklama mekanizması olduğunu anlaması için next parametresi zorunludur.
+  console.error('Global Hata Yakalandı:', err.message);
 
   // Eğer hatanın özel bir HTTP statü kodu yoksa (örneğin 404 gibi), standart olarak 500 dönüyoruz.
   const statusCode = err.statusCode || 500;
 
   res.status(statusCode).json({
-    success: false,
+    success: false, // İşlemin başarılı olup olmadığını belirtir.
     message: err.message || 'Sunucu içi beklenmeyen bir hata oluştu.',
     // Stack trace'i sadece geliştirme aşamasında (development) gösteriyoruz.Çünkü productionda ayrıntılı hata mesajları göstermek güvenlik açığı oluşturabilir.
-    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined // Hata yığını (stack trace), hata ayıklama için kullanılır.
   });
 });
 
