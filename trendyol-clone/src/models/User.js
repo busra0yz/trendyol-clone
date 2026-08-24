@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize'); //Model: Kendimize ait sınıfı oluştururken genetiğini miras alacağımız "Ana Sınıf", DataTypes: Veritabanındaki sütunların tiplerini (Metin, Sayı vb.) belirten sözlük
-const bcyrpt = require('bcyrptjs'); //Şifreleri veritabanında düz metin (123456) şelinde saklamak büyük güvenlik zafiyetidir.
+const { Model, DataTypes } = require('sequelize'); // sequelize kütüphanesi içerisinden Model ve DataTypes'ı tek çeker. Model: Kendimize ait sınıfı oluştururken genetiğini miras alacağımız "Ana Sınıf", DataTypes: Veritabanındaki sütunların tiplerini (Metin, Sayı vb.) belirten sözlük
+const bcrypt = require('bcryptjs'); //Şifreleri veritabanında düz metin (123456) şelinde saklamak büyük güvenlik zafiyetidir.
 const { sequelize } = require('../config/database'); //Veritabanı bağlantısını buraya alıyoruz.
 
 class User extends Model {
@@ -51,9 +51,6 @@ User.init({ //Burada veritabanındaki tablonun sütunlarını tanımlıyoruz.
         sequelize, //Veritabanı bağlantısını buraya alıyoruz.
         modelName: 'User', //Modelin adını burada belirtiyoruz.
         timestamps: true, //Modelin zaman damgalarını burada belirtiyoruz.
-        createdAt: 'createdAt', //Modelin oluşturulma zamanını burada belirtiyoruz.
-        updatedAt: 'updatedAt', //Modelin güncellenme zamanını burada belirtiyoruz.
-
 
         hooks: { //Hooks, modelin belirli olaylarından önce veya sonra çalışacak fonksiyonlardır.
             beforeCreate: async (user) => {
