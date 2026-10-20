@@ -23,16 +23,16 @@ User.init({ //Burada veritabanındaki tablonun sütunlarını tanımlıyoruz.
     },
     name: {
         type: DataTypes.STRING,
-        allownull: false,
+        allowNull: false,
     },
     email: {
         type: DataTypes.STRING,
         unique: true,
-        allownull: false,
+        allowNull: false,
     },
     password: {
         type: DataTypes.STRING,
-        allownull: false,
+        allowNull: false,
     },
     role: {
         type: DataTypes.ENUM('customer', 'admin'), //ENUM, belirli değerlerden sadece birini alabilen veri tipidir.Burada sadece customer ve admin değerlerini alabilir.

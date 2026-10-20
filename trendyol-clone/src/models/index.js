@@ -10,7 +10,7 @@ const OrderItem = require('./OrderItem');
 const Address = require('./Address');
 const Review = require('./Review');
 const Favorite = require('./Favorite');
-
+const Coupon = require('./Coupon');
 
 User.hasMany(Category, { foreignKey: 'userId' });    //User 1'e çok kategori oluşturabilir.
 Category.belongsTo(User, { foreignKey: 'userId' });   //Category 1'e 1 user aittir.
